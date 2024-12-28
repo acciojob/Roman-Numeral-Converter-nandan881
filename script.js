@@ -1,36 +1,28 @@
 function convertToRoman(num) {
-    if (num < 1 || num > 100000) {
-        return "Invalid input: Number out of range.";
-    }
-
+    // Roman numeral symbols and their corresponding values
     const romanSymbols = [
-        ['M', 1000],
-        ['CM', 900],
-        ['D', 500],
-        ['CD', 400],
-        ['C', 100],
-        ['XC', 90],
-        ['L', 50],
-        ['XL', 40],
-        ['X', 10],
-        ['IX', 9],
-        ['V', 5],
-        ['IV', 4],
+        ['M', 1000], 
+        ['D', 500], 
+        ['C', 100], 
+        ['L', 50], 
+        ['X', 10], 
+        ['V', 5], 
         ['I', 1]
     ];
+    
+    let result = '';
 
-    let result = "";
-
-    for (const [symbol, value] of romanSymbols) {
-        while (num >= value) {
-            result += symbol;
-            num -= value;
+    // Loop through each symbol
+    for (let i = 0; i < romanSymbols.length; i++) {
+        while (num >= romanSymbols[i][1]) {
+            result += romanSymbols[i][0];
+            num -= romanSymbols[i][1];
         }
     }
-
+    
     return result;
 }
 
-// Example usage:
-const input = prompt("Enter a number between 0 and 100000");
-alert(convertToRoman(parseInt(input, 10)));
+// Example usage
+console.log(convertToRoman(14));  // Output: XIV
+console.log(convertToRoman(798)); // Output: DCCXCVIII

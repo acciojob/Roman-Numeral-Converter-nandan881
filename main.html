@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Numeral Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-   </script>
+
+<div class="container">
+    <h2>Roman Numeral Converter</h2>
+    <label for="numberInput">Enter a number (0-100000):</label>
+    <input type="number" id="numberInput" placeholder="Enter a number" min="0" max="100000">
+    <button onclick="convertAndDisplay()">Convert</button>
+    <h3>Roman Numeral:</h3>
+    <p id="result"></p>
+</div>
+
+<script>
+    function convertToRoman(num) {
+        if (num < 1 || num > 100000) {
+            return "Input number out of range. Please enter a number between 1 and 100000.";
+        }
+
+        const romanNumerals = [
+            ['M', 1000],
+            ['D', 500],
+            ['C', 100],
+            ['L', 50],
+            ['X', 10],
+            ['V', 5],
+            ['I', 1]
+        ];
+
+        let result = '';
+
+        for (let i = 0; i < romanNumerals.length; i++) {
+            while (num >= romanNumerals[i][1]) {
+                result += romanNumerals[i][0];
+                num -= romanNumerals[i][1];
+            }
+        }
+
+        return result;
+    }
+
+    function convertAndDisplay() {
+        const num = parseInt(document.getElementById("numberInput").value);
+        const roman = convertToRoman(num);
+        document.getElementById("result").textContent = roman;
+    }
+</script>
 
 </body>
-
 </html>

@@ -15,6 +15,10 @@ function convertToRoman(num) {
         ['I', 1]
     ];
 
+    if (num < 0 || num > 100000) {
+        return "Invalid input. Please enter a number between 0 and 100000.";
+    }
+
     if (num === 0) {
         return ""; // No Roman numeral representation for 0
     }
@@ -35,4 +39,4 @@ function convertToRoman(num) {
 console.log(convertToRoman(14));   // Output: XIV
 console.log(convertToRoman(798));  // Output: DCCXCVIII
 console.log(convertToRoman(0));    // Output: ""
-console.log(convertToRoman(100000)); // Output: (Large Roman numeral string for 100000)
+console.log(convertToRoman(100000)); // Output: MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

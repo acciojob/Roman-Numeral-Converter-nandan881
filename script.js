@@ -16,11 +16,11 @@ function convertToRoman(num) {
     ];
 
     if (num < 0 || num > 100000) {
-        return "Invalid input. Please enter a number between 0 and 100000.";
+        return ""; // Out-of-range values return an empty string
     }
 
     if (num === 0) {
-        return ""; // No Roman numeral representation for 0
+        return ""; // Explicitly handle 0
     }
 
     let result = '';
@@ -35,8 +35,8 @@ function convertToRoman(num) {
     return result;
 }
 
-// Example usage:
-console.log(convertToRoman(14));   // Output: XIV
-console.log(convertToRoman(798));  // Output: DCCXCVIII
-console.log(convertToRoman(0));    // Output: ""
+// Test cases
+console.log(convertToRoman(14));    // Output: XIV
+console.log(convertToRoman(798));   // Output: DCCXCVIII
+console.log(convertToRoman(0));     // Output: ""
 console.log(convertToRoman(100000)); // Output: MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

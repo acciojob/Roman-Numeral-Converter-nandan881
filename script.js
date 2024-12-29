@@ -1,29 +1,30 @@
 function convertToRoman(num) {
-    if (num < 1 || num > 100000) {
-        return "Input number out of range. Please enter a number between 1 and 100000.";
-    }
-
-    // Roman numeral symbols and their corresponding values
     const romanNumerals = [
-        ['M', 1000],
-        ['D', 500],
-        ['C', 100],
-        ['L', 50],
-        ['X', 10],
-        ['V', 5],
-        ['I', 1]
+        { value: 1000, numeral: 'M' },
+        { value: 900, numeral: 'CM' },
+        { value: 500, numeral: 'D' },
+        { value: 400, numeral: 'CD' },
+        { value: 100, numeral: 'C' },
+        { value: 90, numeral: 'XC' },
+        { value: 50, numeral: 'L' },
+        { value: 40, numeral: 'XL' },
+        { value: 10, numeral: 'X' },
+        { value: 9, numeral: 'IX' },
+        { value: 5, numeral: 'V' },
+        { value: 4, numeral: 'IV' },
+        { value: 1, numeral: 'I' }
     ];
 
     let result = '';
-
-    // Loop through each Roman numeral value
-    for (let i = 0; i < romanNumerals.length; i++) {
-        // Subtract as many of the current Roman numeral value as possible
-        while (num >= romanNumerals[i][1]) {
-            result += romanNumerals[i][0];
-            num -= romanNumerals[i][1];
+    for (const { value, numeral } of romanNumerals) {
+        while (num >= value) {
+            result += numeral;
+            num -= value;
         }
     }
-
     return result;
 }
+
+// Example usage:
+console.log(convertToRoman(14));  // Output: XIV
+console.log(convertToRoman(798)); // Output: DCCXCVIII

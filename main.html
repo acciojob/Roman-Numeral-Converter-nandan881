@@ -3,71 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roman Numeral Converter</title>
+    <title>Roman Numerals Styling</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, button {
+        .roman {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 2rem;
+            color: darkred;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, gold, lightyellow);
             padding: 10px;
-            margin: 5px;
-        }
-        #result {
-            margin-top: 10px;
-            font-weight: bold;
+            border: 2px solid black;
+            border-radius: 5px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <h1>Roman Numeral Converter</h1>
-    <p>Enter a number between 0 and 100,000:</p>
-    <input type="number" id="numberInput" placeholder="Enter a number" min="0" max="100000">
-    <button onclick="convertToRoman()">Convert</button>
-    <p id="result"></p>
-
-    <script>
-        function convertToRoman() {
-            const symbols = [
-                ['M', 1000],
-                ['CM', 900],
-                ['D', 500],
-                ['CD', 400],
-                ['C', 100],
-                ['XC', 90],
-                ['L', 50],
-                ['XL', 40],
-                ['X', 10],
-                ['IX', 9],
-                ['V', 5],
-                ['IV', 4],
-                ['I', 1]
-            ];
-
-            const num = parseInt(document.getElementById("numberInput").value);
-
-            if (isNaN(num) || num < 0 || num > 100000) {
-                document.getElementById("result").textContent = "Invalid input. Please enter a number between 0 and 100,000.";
-                return;
-            }
-
-            if (num === 0) {
-                document.getElementById("result").textContent = "No Roman numeral for 0.";
-                return;
-            }
-
-            let result = '';
-            let tempNum = num;
-
-            for (const [symbol, value] of symbols) {
-                while (tempNum >= value) {
-                    result += symbol;
-                    tempNum -= value;
-                }
-            }
-
-            document.getElementById("result").textContent = `The Roman numeral for ${num} is: ${result}`;
-        }
-    </script>
+    <div class="roman">XIV</div>
+    <div class="roman">DCCXCVIII</div>
 </body>
 </html>

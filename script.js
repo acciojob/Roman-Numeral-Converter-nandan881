@@ -1,4 +1,8 @@
-function romanToInt(s) {
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
     const romanValues = {
         'I': 1,
         'V': 5,
@@ -22,5 +26,5 @@ function romanToInt(s) {
         prevValue = currentValue;
     }
 
-    return total;
-}
+    return total;
+};

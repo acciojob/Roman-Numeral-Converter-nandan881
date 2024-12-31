@@ -1,4 +1,6 @@
-int romanToInt(string s) {
+class Solution {
+public:
+    int romanToInt(string s) {
         unordered_map<char,int> roman_values = {{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
         int total =0;
         int prev_value =0;
@@ -11,5 +13,6 @@ int romanToInt(string s) {
             }
             prev_value = current_value;
         }
-        return total;
-    }
+        return total;
+    }
+}

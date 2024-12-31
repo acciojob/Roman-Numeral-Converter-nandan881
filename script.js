@@ -1,40 +1,26 @@
-function convertToRoman(num) {
-    const romanSymbols = [
-        ['M', 1000],
-        ['CM', 900],
-        ['D', 500],
-        ['CD', 400],
-        ['C', 100],
-        ['XC', 90],
-        ['L', 50],
-        ['XL', 40],
-        ['X', 10],
-        ['IX', 9],
-        ['V', 5],
-        ['IV', 4],
-        ['I', 1]
-    ];
+function romanToInt(s) {
+    const romanValues = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    };
 
-    let result = '';
+    let total = 0;
+    let prevValue = 0;
 
-    for (const [symbol, value] of romanSymbols) {
-        while (num >= value) {
-            result += symbol;
-            num -= value;
+    for (let i = s.length - 1; i >= 0; i--) {
+        const currentValue = romanValues[s[i]];
+        if (currentValue < prevValue) {
+            total -= currentValue;
+        } else {
+            total += currentValue;
         }
+        prevValue = currentValue;
     }
 
-    return result;
-}
-
-function convertAndDisplay() {
-    const input = document.getElementById('numberInput').value;
-    const outputDiv = document.getElementById('output');
-
-    if (input === '' || input < 0 || input > 100000) {
-        outputDiv.textContent = 'Please enter a valid number between 0 and 100000.';
-    } else {
-        const romanNumeral = convertToRoman(Number(input));
-        outputDiv.textContent = romanNumeral;
-    }
+    return total;
 }
